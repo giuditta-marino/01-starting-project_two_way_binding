@@ -1,4 +1,4 @@
-import { Component, input, Input, OnInit, output } from '@angular/core';
+import { Component, input, Input, model, OnInit, output } from '@angular/core';
 
 @Component({
   selector: 'app-rect',
@@ -8,14 +8,15 @@ import { Component, input, Input, OnInit, output } from '@angular/core';
 })
 export class Rect implements OnInit {
   //@Input({required: true}) rectSize!: { width: string, height: string };
-  rectSize = input.required<{ width: string, height: string }>();
-  rectSizeChange = output<{ width: string, height: string }>();
+  //rectSize = input.required<{ width: string, height: string }>();
+  //rectSizeChange = output<{ width: string, height: string }>();
+  rectSize = model.required<{ width: string, height: string }>();
 
   ngOnInit(): void {
     console.log('rectsize ', this.rectSize());    
   }
 
   onReset() {
-    this.rectSizeChange.emit({ width: '150', height: '150' });
+    this.rectSize.set({ width: '150', height: '150' });
   }
 }
